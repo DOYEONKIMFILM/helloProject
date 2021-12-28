@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/boxmodel.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1,
+        div,
+        p,
+        span {
+            border: 5px solid blue;
+            /* 
+            border-width: 1px;
+            border-style: solid;
+            border-color: blue; */
+        }
+
+        span {
+            display: inline-block;
+            /* width, height 적용을 할려면 인라인블록*/
+            padding: 2px 10px;
+           /* margin: 2px 5%; */
+            width: 100px;
+            height: 40px;
+            box-shadow: 3px 1px 5px rgb(142, 142, 218);
+            /*border-style: dashed;
+            border-color: green;
+            border-width: 3px;*/
+            border : 3px dashed green;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>시간이란</h1>
+    <div>내일 죽을 것처럼 <span>오늘</span>을 살고</div>
+    <p>영원히 살 것처럼 <br>내일을 꿈꾸어라.</p>
+
+    <span>content1</span>
+    <span>content2</span>
+    <span>content3</span>
+</body>
+
+</html>
