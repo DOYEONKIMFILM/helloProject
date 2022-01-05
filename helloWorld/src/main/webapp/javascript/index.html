@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/index.html</title>
+    <style>
+        #tbl>thead>tr {
+            background-color: powderblue;
+        }
+
+        #tbl>tbody>tr:nth-child(2n) {
+            background-color: rgb(250, 250, 120);
+        }
+
+        #tbl>tbody>tr:nth-child(2n+1) {
+            background-color: pink;
+        }
+
+        /* span {
+            display: inline-block;
+            border: 1px solid black;
+            margin: 5px;
+            padding: 3px;
+            width: 40px;
+            text-align: center;
+        } */
+
+        span:not(:empty) {
+            display: inline-block;
+            padding: 3px;
+            border: 1px solid grey;
+            margin: 5px;
+            width: 40px;
+            text-align: center;
+        }
+
+        span:empty {
+            display: inline-block;
+            padding: 3px;
+            margin: 5px 6px;
+            width: 40px;
+        }
+
+        #sp1 {
+            display: inline-block;
+            border: 1px solid white;
+        }
+
+        .sunday {
+            background-color: rgb(252, 51, 51);
+            color: white;
+        }
+
+        .saturday {
+            background-color: rgb(61, 140, 243);
+            color: white;
+        }
+    </style>
+    <script>
+        console.log("hello, world!"); /* 개발자모드 콘솔에 출력 */
+        document.write('<h3>hello, world</h3>'); /* 웹페이지에 출력 */
+        // window.alert("hello, world"); /* 확인창으로 출력 */
+    </script>
+    <script src="calendar.js"></script>
+</head>
+
+<body>
+    <div id="show"></div>
+    <script src="string1.js"></script>
+    <script>
+         // document.querySelector('h3').innerHTML = 'Nice, World';
+        //  document.querySelector('h3').style.background = 'yellow';
+    </script>
+
+
+</body>
+
+</html>

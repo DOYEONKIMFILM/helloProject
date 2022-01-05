@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html/board_register.html</title>
+    <style>
+        .container {
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+            font-size: 14px;
+            color: rgb(51, 51, 51);
+        }
+        #v1 {
+           
+        }   
+        
+        }
+        li {
+            list-style-type: none;
+
+        }
+    </style>
+</head>
+<body>
+
+    <form class="container">
+        <ul>
+            <li>
+                <hr id="v1">
+                <label><strong>분야</strong></label>
+                <select>
+                    <option value="v1" selected>기타</option>
+                    <option value="v2">이미지</option>
+                    <option value="v3">글</option>
+                </select>
+                <hr id="v1">
+            </li>
+            <li>
+                <strong>제목</strong> <input type="text" value="게시판에 사진(이미지) 올리는 방법">
+                <hr>
+            </li>
+            <li>
+                <strong>작성자</strong> <input type="text" value="엔씨소프트문화재단">
+                <hr>
+            </li>
+            <li>
+                <label><strong>내용</strong></label>
+                <textarea cols="70" rows="20" placeholder="'글쓰기'를 누르시면 위와 같은 화면이 뜹니다.&#13;&#10;제목과 내용을 입력하신 후 사진을 올리고 싶으신 경우는 하단의 '이미지>파일 선택을 눌러주십시오.&#13;&#10;업로드하고자 하는 사진을 찾아 클릭하시면 사진이 첨부됩니다.&#13;&#10;사진 외 기타 첨부파일(워드, 한글, 동영상 등) 은 '첨부파일> 파일선택을 눌러주십시오 감사합니다."></textarea>
+                <hr>
+            </li>
+            <li>
+                <strong>첨부파일</strong> <input type="file" value="파일 선택">
+                <hr>
+            </li>
+            <li>
+                <strong>이미지</strong> <input type="file" value="파일 선택">
+                <hr>
+            </li>
+        </ul>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/background.html</title>
+    <style>
+        /* body {
+            background-image: url('../images/yel.jpg');
+            background-repeat: repeat;
+            background-origin: content-box;
+            border: 10px solid yellow;
+        } */
+
+        #g1 {
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+            background-clip: border-box;
+            border: 5px dotted gray;
+            padding: 10px;
+
+        }
+
+        #g2 {
+            width: 100px;
+            height: 100px;
+            border: 5px dotted gray;
+            padding: 10px;
+            background-origin: border-box;
+            background-image: url('../images/hack.jpg');
+            background-repeat: no-repeat;
+            background-position: right top;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="g1">hello1</div>
+    <div id="g2">hello2</div>
+    
+</body>
+
+</html>

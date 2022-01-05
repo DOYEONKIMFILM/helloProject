@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/item.html</title>
+    <style>
+       * {
+           margin: 0;
+           padding: 0;
+           font-size: 15px;
+           box-sizing: border-box;
+       }
+       .info {
+           width: 500px;
+            margin: 10px;
+            padding: 10px;
+            float: right;
+            position: static
+        }
+
+        caption {
+           font-size: 18px;
+           padding-top: 5%;
+           padding-right: 5%;
+           text-align: left;
+           font-weight: bold;
+           padding-bottom: 5%;
+           border-bottom: 1px solid gray;
+           
+        }
+
+        tr, td, th {
+           font-size: 13px;
+        }
+        .small {
+            color: rgb(104, 104, 104);
+            padding-inline-start: 30px;
+        }
+
+        #cl {
+            color: rgb(170, 170, 170);
+            width: 70%;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="info">
+        <thead>
+
+        </thead>
+        <table>
+            <tbody>
+                <caption>(Y) 72121-HU 캐주얼무지캠프캡</caption>
+                <tr>
+                    <th>판매가</th>
+                    
+                </tr>
+                <tr>
+                    <th>구매제한</th>
+                    <td class="small">최소 1개</td>
+                </tr>
+                <tr>
+                    <th>배송비</th>
+                    <td class="small">2500원<br>택배 / 주문시결제(선결제)</td>
+                </tr>
+                <tr>
+                    <th>상품코드</th>
+                    <td class="small">1000000329</td>
+                </tr>
+                <tr>
+                    <th>제조사</th>
+                    <td class="small">MILLITAGE</td>
+                </tr>
+                <tr>
+                    <th>원산지</th>
+                    <td class="small">made in korea <img src="../images/kor.PNG" alt=""></td>
+                </tr>
+                <tr>
+                    <th>샘플가격</th>
+                    <td class="small">샘플(1개) 구매가능</td>
+                </tr>
+                <tr>
+                    <th>결제수단</th>
+                    <td class="small">무통장입금, 신용카드, 실시간계좌이체</td>
+                </tr>
+                <tr class="line">
+                    <th>VAT</th>
+                    <td class="small">10%별도</td>
+                </tr>
+        </table>
+        <tfoot>
+            <p><label for="cl2">color</label>
+            <select id="cl" >
+                <option value="col" selected>= 옵션 : 가격 =</option>
+                <option value="col1">Yellow</option>
+                <option value="col2">Red</option>
+                <option value="col3">Green</option>
+                <option value="col4">Gray</option>
+                <option value="col5">Balck</option>
+            </select></p>
+            <button type="submit">로그인 후 구매</button>
+        </tfoot>
+    </div>
+    <div class="caps">
+        <img src="../images/cap.PNG" alt="">
+    </div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz.html</title>
+    <style>
+        #container {
+            width: 1200px;
+            margin: 10px auto;
+            font-size: 14px;
+        }
+
+        #sidebar {
+            width: 280px;
+            float: left;
+            margin: 3px auto;
+            padding: 20px;
+        }
+
+        #sidebar ul li {
+            color: rgb(95, 95, 95);
+            padding: 10px;
+            font-weight: bold;
+
+        }
+
+        h2 {
+            padding: 0px 40px;
+            color: rgb(95, 95, 95);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        header {
+            width: 100%;
+            height: 60px;
+        }
+
+        header ul li {
+            display: inline-block;
+            padding: 7px 15px;
+            margin: 3px 10px;
+            color: rgb(95, 95, 95);
+
+        }
+
+        #green {
+            color: rgb(45, 156, 123);
+            border-bottom: rgb(45, 156, 123);
+
+        }
+
+        #gr {
+            color: white;
+            background-color: rgb(56, 165, 132);
+        }
+
+        #sid {
+            padding: 1px 20px;
+            margin: 10px;
+        }
+
+        #sid li {
+            padding: 7px;
+            margin: 1px;
+        }
+
+        img {
+            float: right;
+        }
+
+        #hr1 {
+            margin: -5px auto;
+        }
+
+        h1 {
+            color: rgb(44, 44, 44);
+        }
+
+        table {
+            margin: 80px;
+            border-top: 1px solid rgb(56, 56, 56);
+            border-bottom: 1px solid rgb(199, 198, 198);
+            text-align: center;
+            font-weight: bold;
+            color: rgb(73, 73, 73);
+        }
+
+        #tit {
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-top: 1px solid rgb(199, 198, 198);
+
+        }
+
+        th {
+            padding: 12px;
+        }
+
+        footer {
+            position: absolute;
+            top: 745px;
+            left: 45%;
+            clear: left;
+        }
+
+        #total {
+            color: rgb(90, 89, 89);
+            position: absolute;
+            top: 200px;
+            font-size: 12px;
+        }
+
+        #serc {
+            margin: 15px;
+            padding: 0;
+            float: right;
+
+        }
+
+        #topico {
+            position: fixed;
+            top: 77px;
+            right: 50px;
+        }
+
+        #choice, #searcch {
+            margin: 0px;
+            padding: 7px 60px 5px 0px;
+            font-weight: bold;
+        }
+
+        #ze1 {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <ul>
+                <hr>
+                <li><strong>감영병</strong></li>
+                <li><strong>건강정보</strong></li>
+                <li><strong>정책정보</strong></li>
+                <li><strong>연구개발</strong></li>
+                <li id="green"><strong>알림·자료</strong></li>
+                <li><strong>간행물·통계</strong></li>
+                <li><strong>민원·정보공개</strong></li>
+                <li><strong>기관소개</strong></li>
+                <li><strong>사업별 누리집</strong></li>
+                <hr>
+            </ul>
+        </header>
+        <nav id=sidebar>
+            <h2>알림·자료</h2>
+
+            <ul id="sid">
+                <hr id="hr1">
+                <li>이달의건강소식<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li>보도자료<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li>포토뉴스<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li>홍보자료<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li>공지사항<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li id="gr" style="color: white;">공고/공시<img src="../images/gr.PNG" width="-40px" alt=""></li>
+                <li>채용공고<img src="../images/hwsalunder.PNG" alt=""></li>
+                <li>법령·지침·서식<img src="../images/hwsalunder.PNG" alt=""></li>
+                <hr>
+            </ul>
+        </nav>
+        <main>
+            <h1>공고/공시</h1><img id="topico" src="../images/ico.PNG" alt="">
+            <hr>
+            <strong id="total">전체 3,320건, 현재페이지<span style="color: red;">2</span>/332</strong>
+            <div id="serc">
+                <select id="choice">
+                    <option value="ze1" selected>제목</option>
+                    <option value="ze2">번호</option>
+                    <option value="ze3">작성자</option>
+                </select>
+                <input type="search" id="searcch" placeholder="검색어를입력하세요" required><img src="../images/ser.PNG" alt="">
+            </div>
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일자</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3310</td>
+                        <td id="tit">건강정보 개발 및 국가건강정보포털 운영 2022년 민간위...</td>
+                        <td>만성질환예방과</td>
+                        <td>2021-12-28</td>
+                        <td>137</td>
+                    </tr>
+                    <tr>
+                        <td>3309</td>
+                        <td id="tit">국제공인예방접종지정기관 지정 공고</td>
+                        <td>질병관리청 검역정책과</td>
+                        <td>2021-12-23</td>
+                        <td>305</td>
+                    </tr>
+                    <tr>
+                        <td>3308</td>
+                        <td id="tit">2022년 환전외국환은행 선정결과 공고</td>
+                        <td>백신계약팀</td>
+                        <td>2021-12-23</td>
+                        <td>184</td>
+                    </tr>
+                    <tr>
+                        <td>3307</td>
+                        <td id="tit">2021년 질병관리청 정책연구용역(강원동 홍천군과 황성군...</td>
+                        <td>운영지원과</td>
+                        <td>21-12-20</td>
+                        <td>378</td>
+                    </tr>
+                    <tr>
+                        <td>3306</td>
+                        <td id="tit">2021년 질병관리청 정책연구용역(국민건강영양조사 원시자...</td>
+                        <td>운영지원과</td>
+                        <td>2021-12-17</td>
+                        <td>432</td>
+                    </tr>
+                    <tr>
+                        <td>3305</td>
+                        <td id="tit">2021년 질병관리청 건강영양조사분석과 정책연구용역(3건)...</td>
+                        <td>운영지원과</td>
+                        <td>2021-12-14</td>
+                        <td>770</td>
+                    </tr>
+                    <tr>
+                        <td>3304</td>
+                        <td id="tit">제1차 기후보건영향평가 공청회 개최 공고</td>
+                        <td>미래질병대비과</td>
+                        <td>2021-12-08</td>
+                        <td>438</td>
+                    </tr>
+                    <tr>
+                        <td>3303</td>
+                        <td id="tit">2021년 질병관리청 정책연구용역(인권 관점의 방역세계 구...</td>
+                        <td>운영지원과</td>
+                        <td>2021-12-07</td>
+                        <td>633</td>
+                    </tr>
+                    <tr>
+                        <td>3302</td>
+                        <td id="tit">2021년 질병관리청 만성질환 관리과 정책연구용역(4건)입...</td>
+                        <td>운영지원과</td>
+                        <td>2021-12-07</td>
+                        <td>583</td>
+                    </tr>
+                    <tr>
+                        <td>3301</td>
+                        <td id="tit">2021년 질병관리청 정책연구용역(404호, 505호)입찰 공고...</td>
+                        <td>운영지원과</td>
+                        <td>2021-12-06</td>
+                        <td>500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+<footer>
+    <img src="../images/pagee.PNG" alt="">
+</footer>
+
+</html>

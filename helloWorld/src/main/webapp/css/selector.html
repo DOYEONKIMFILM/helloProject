@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/selector.html</title>
+    <style>
+        * {
+            /* 전체 선택자 */
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .content {
+            /* 클래스 선택자 */
+        }
+
+        #row {
+            /* 아이디 선택자 */
+        }
+
+        h1,
+        p {
+            /* 타입 선택자 */
+        }
+
+        .theme {
+            width: 50%;
+            float: left;
+        }
+
+        .content {
+            width: 50%;
+            float: left;
+        }
+
+        div.theme ul {
+            margin-left: 50px;
+            list-style-type: square;
+
+        }
+
+        div.content>ul {
+            list-style-type: circle;
+        }
+
+        li+ul {
+            background: burlywood;
+        }
+
+        li~ul {
+            color: red;
+        }
+
+        body>ul {
+            margin-left: 100px;
+        }
+
+        a[href^="https"] {
+            color: red;
+
+        }
+
+        a[href*="w3"] {
+            color: greenyellow;
+
+        }
+
+        a[class="main"]{
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li><a class="main first" href="https://www.spec.whatwg.org" target="_blank">HTML</a></li>
+        <li><a class="main second" href="https://www.w3.org" target="_blank">W3</a></li>
+        <li><a class="main second-1" href="http://www.spec.org" target="_blank">SPEC</a></li>
+        <li><a class="main second-2" href="https://www.spec.whatwg.org" target="_parent">ORG</a></li>
+        <li><a class="main" target="_blank">NONE</a></li>
+    </ul>
+    <div style="height: 100px;"></div>
+    <div class="container">
+        <div class="theme">
+            <ul>
+                <ul>
+                    <li>Car</li>
+                    <li>Plane</li>
+                </ul>
+                <li>Apple</li>
+                <li>Banana</li>
+                <li>Cherry</li>
+            </ul>
+
+        </div>
+        <div class="content">
+            <ul>
+                <li>Apple</li>
+                <li>Banana</li>
+                <li>Cherry</li>
+                <ul>
+                    <li>Car</li>
+                    <li>Plane</li>
+                </ul>
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

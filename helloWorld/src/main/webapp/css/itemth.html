@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/items.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 30px auto;
+            padding-top: 30px;
+            padding-left: 45px;
+        }
+
+        .top {
+            margin-bottom: 20px;
+        }
+
+        .new_item {
+            padding: 3px;
+            width: 150px;
+            border-color: rgb(202, 201, 202);
+        }
+
+        .image {
+            float: left;
+            width: 40%;
+            position: relative;
+            top: 10px;
+        }
+
+        .info {
+            float: left;
+            width: 50%;
+            padding-bottom: 15px;
+            border-bottom: 2px solid black;
+        }
+
+        .item {
+            padding: 20px 5px;
+        }
+
+        .item_name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid black;
+        }
+
+        .share {
+            margin-left: 40px;
+            position: relative;
+            top: -5px;
+            padding: 2px 5px;
+            color: rgb(114, 113, 113);
+            font-weight: bold;
+        }
+
+        .title {
+            width: 20%;
+            font-weight: bold;
+            float: left;
+        }
+
+        .comments {
+            width: 75%;
+            float: left;
+        }
+
+        .option_price {
+            width: 100%;
+            color: rgb(145, 143, 143);
+            padding: 5px 10px;
+        }
+
+        .login {
+            float: right;
+            width: 45%;
+        }
+
+        button {
+            width: 50%;
+            height: 70px;
+            color: white;
+            background-color: black;
+            font-size: large;
+            font-weight: bold;
+            position: relative;
+            top: 30px;
+        }
+
+        .left {
+            position: fixed;
+            left: 10px;
+            top: 20px;
+        }
+
+        .right {
+            position: fixed;
+            right: 40px;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"><img src="../images/left_ad.PNG" alt=""></div>
+        <div class="right"><img src="../images/right_menu.PNG" alt=""></div>
+
+        <div class="top">
+            <p>홈 > <select class="new_item">
+                    <option value="">신상품</option>
+                    <option value="">특가품</option>
+                    <option value="">모자</option>
+                    <option value="">베스트셀러</option>
+                </select></p>
+        </div>
+        <div class="image">
+            <div class="top"></div>
+            <div class="mid"><img src="../images/cap2_mid.PNG" alt=""></div>
+            <div class="bottom"><img src="../images/cap2_bottom.PNG" alt=""></div>
+            <div class="add"><img src="../images/cap2_add.PNG" alt=""></div>
+        </div>
+        <div class="info">
+            <div class="item">
+                <div class="item_name">(BR) 50521-CM 앙고라뽀글팝콘베레모
+                    <select class="share">
+                        <option value="">공유</option>
+                    </select>
+                </div>
+            </div>
+            <div class="item">
+                <span class="title">판매가</span>
+                <span class="comments">15,000원</span>
+            </div>
+            <div class="item">
+                <span class="title">구매제한</span>
+                <span class="comments">최소 1개</span>
+            </div>
+            <div class="item">
+                <span class="title">배송비</span>
+                <span class="comments">2,500원<br>택배/주문시결제(선결제)</span>
+            </div>
+            <div class="item">
+                <span class="title">상품코드</span>
+                <span class="comments">1000000308</span>
+            </div>
+            <div class="item">
+                <span class="title">브랜드</span>
+                <span class="comments">MILLATAGE</span>
+            </div>
+            <div class="item">
+                <span class="title">제조사</span>
+                <span class="comments">동대문모자</span>
+            </div>
+            <div class="item">
+                <span class="title">원산지</span>
+                <span class="comments">made in china</span>
+            </div>
+            <div class="item">
+                <span class="title">샘플가격</span>
+                <span class="comments">샘플(1개) 구매가능</span>
+            </div>
+            <div class="item">
+                <span class="title">결제수단</span>
+                <span class="comments">무통장입금,신용카드,실시간계좌이체</span>
+            </div>
+            <div class="item">
+                <span class="title">VAT</span>
+                <span class="comments">10%별도</span>
+            </div>
+            <div class="item">
+                <span class="title">색상(color)</span>
+                <span class="comments">
+                    <select class="option_price">
+                        <option value="">= 옵션 : 가격 =</option>
+                        <option value="">블랙 : 15,000원</option>
+                        <option value="">블루 : 15,000원</option>
+                        <option value="">레드 : 15,000원</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="login">
+            <button>로그인 후 구매</button>
+        </div>
+    </div>
+    <div style="margin: 10 auto; width: 1000px;">
+        <img src="../images/item_detail.PNG" alt="">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/column3.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            /* margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px; */
+            width: 1200px;
+            margin: 20px auto;
+            
+        }
+        
+        header {
+            width: 1200px;
+            height: 120px;
+            border: 1px solid gray;
+        }
+
+        sidebar {
+            border: 1px solid gray;
+            height: 600px;
+        }
+        .leftbar {
+            width: 250px;
+            float: left;
+        }
+
+        contents {
+            width: 800px;
+            height: 600px;
+            float: left;
+            border: 1px solid gray;
+        }
+
+        .rightbar {
+            float: left;
+            width: 150px;
+        }
+
+        footer {
+            clear: left;
+            width: 1200px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <header>헤더</header>
+    <sidebar class="leftbar">사이드바</sidebar>
+    <contents>본문</contents>
+    <sidebar class="rightbar">사이드바</sidebar>
+    <footer>푸터</footer>
+</div>
+</body>
+
+</html>
