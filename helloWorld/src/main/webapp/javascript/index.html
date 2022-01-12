@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>javascript/index.html</title>
-    <style>
+    <!-- <style>
         #tbl>thead>tr {
             background-color: powderblue;
         }
@@ -58,23 +58,155 @@
             background-color: rgb(61, 140, 243);
             color: white;
         }
-    </style>
-    <script>
-        console.log("hello, world!"); /* 개발자모드 콘솔에 출력 */
-        document.write('<h3>hello, world</h3>'); /* 웹페이지에 출력 */
+    </style> -->
+    <!-- <script>
+        // console.log("hello, world!"); /* 개발자모드 콘솔에 출력 */
+        // document.write('<h3>hello, world</h3>'); /* 웹페이지에 출력 */
         // window.alert("hello, world"); /* 확인창으로 출력 */
-    </script>
-    <script src="calendar.js"></script>
+    </script> -->
+    <!-- <script src="calendar.js"></script> -->
+
+    <!-- <style>
+        /* div:not(#show) {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            color: yellow;
+            border: 1px solid grey;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+        } */
+    </style> -->
+
+    <style>
+        #add {
+            border: 1px solid grey;
+            width: 70%;
+            float: left;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        .row>label {
+            display: inline-block;
+            width: 12%;
+        }
+
+        .row {
+            margin: 5px 10px;
+
+        }
+
+        .row>input {
+            display: inline-block;
+            width: 75%;
+        }
+
+        #btn {
+            border: 1px grey;
+            margin: 5px;
+            float: left;
+            width: 20%;
+            height: 140px;
+        }
+
+        #btn>button {
+            margin-top: 30px;
+            width: 120px;
+         
+        }
+
+        #list {
+            float: left;
+            border: 1px solid grey;
+            width: 93%;
+            height: 300px;
+            margin-left: 5px;
+        }
+
+        #list table {
+            width: 97%;
+            margin: 10px auto;
+        }
+
+        th, td {
+            padding: 3px 5px;
+            text-align: center;
+        }
+    </style>
 </head>
 
-<body>
-    <div id="show"></div>
-    <script src="string1.js"></script>
-    <script>
-         // document.querySelector('h3').innerHTML = 'Nice, World';
-        //  document.querySelector('h3').style.background = 'yellow';
-    </script>
+<body id="bdy">
+    <!-- <div id="show"></div> -->
+    <!-- <ul>
+        <li>23</li>
+        <li>17</li>
+        <li>33</li>
+        <li>72</li>
+        <li>88</li>
+    </ul>
+    <ul>
+        <li>23</li>
+        <li>17</li>
+        <li>33</li>
+        <li>72</li>
+        <li>88</li>
+    </ul> 
 
+    <ul>
+        <li>1001 - 류지희 - 80</li>
+        <li>1002 - 차주연 - 85</li>
+        <li>1003 - 전호민 - 83</li>
+    </ul> -->
+
+
+    <!-- <script>
+        // document.querySelector('h3').innerHTML = 'Nice, World';
+        //  document.querySelector('h3').style.background = 'yellow';
+    </script> -->
+
+    <!-- 
+
+<input type="text" id="sname">
+<button id="delBtn">조회삭제</button>
+<button id="addBtn">추가</button>
+<ul id="nameList">
+    <li>김은서</li>
+    <li>황보경</li>
+    <li>고권영</li>
+    <li>류기태</li>
+    <li>구자현</li>
+</ul> -->
+
+    <div id="show">
+        <div id="add">
+            <div class="row">
+                <label for="">이름</label>
+                <input type="text" name="name" placeholder="내용을 입력해주세요" required>
+            </div>
+            <div class="row">
+                <label for="">연락처</label>
+                <input type="text" name="phone" placeholder="내용을 입력해주세요" required>
+            </div>
+            <div class="row">
+                <label for="">주소</label>
+                <input type="text" name="addr" placeholder="내용을 입력해주세요" required>
+            </div>
+            <div class="row">
+                <label for="">이메일</label>
+                <input type="text" name="email" placeholder="내용을 입력해주세요" required>
+            </div>
+        </div>
+        <div id="btn">
+            <button>등록</button>
+            <button>선택삭제</button>
+        </div>
+        <div id="list"></div>
+    </div>
+
+    <script src="dom4.js"></script>
 
 </body>
 

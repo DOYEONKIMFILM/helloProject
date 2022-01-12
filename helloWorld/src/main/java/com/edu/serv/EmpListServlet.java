@@ -36,10 +36,11 @@ public class EmpListServlet extends HttpServlet {
 		out.println("<tr><th>사원번호</th><trh>이름</th><th>이메일</th><th>입사일자</th><th>직무</th><th>급여</th></tr>");
 		out.println("</thead>");
 		out.println("<tbody>");
-		
+
 		for (EmployeeVO emp : list) {
 			out.println("<tr>");
-			out.println("<td><a href='html/GetEmplServlet?id=" + emp.getEmployeeId() + "'>" + emp.getEmployeeId() + "</a></td>");
+			out.println("<td><a href='html/GetEmplServlet?id=" + emp.getEmployeeId() + "'>" + emp.getEmployeeId()
+					+ "</a></td>");
 			out.println("<td>" + emp.getLastName() + " " + emp.getFirstName() + "</td>");
 			out.println("<td>" + emp.getEmail() + "</td>");
 			out.println("<td>" + emp.getHireDate() + "</td>");

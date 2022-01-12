@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
+    <style>
+        #add {
+            border: 1px solid grey;
+            width: 80%;
+            float: left;
+            margin: 10px;
+            padding: 15px;
+        }
+        .row>label {
+            text-align: center;
+            display: inline-block;
+            width: 12%;
+            background-color: yellow;
+        }
+        .row {
+            margin: 4px 10px;
+
+        }
+        .row>input {
+            display: inline-block;
+            width: 55%;
+        }
+        #btn {
+            border: 1px rgb(206, 205, 205);
+            margin: 10px;
+            float: left;
+            position: absolute;
+            left: 580px;
+            top: 42px;
+            width: 20%;
+            
+        }
+        #btn>button {
+            margin-top: 15px;
+            width: 90px;
+         
+        }
+        #list {
+            float: left;
+            border: 1px solid grey;
+            width: 98%;
+            height: 350px;
+            margin-left: 5px;
+        }
+        #list table {
+            width: 97%;
+            margin: 10px auto;
+        }
+        
+
+        th {
+            padding: 6px 10px;
+            text-align: center;
+            background-color: grey;
+            color: white;
+            font-weight: lighter;
+        }
+
+        tr {
+          text-align: center;
+          font-size: 15px;
+        }
+
+        td {
+            text-align: center;
+            padding: 12px 17px;
+        }
+    </style>
+</head>
+
+<body id="bdy"> 
+       
+    <div id="add">
+        <div class="row">
+            <hr style="border: 2px solid pink; margin-top: 2px; margin-bottom:2px">
+            <label for="">도서코드</label>
+            <input type="texx" name="bookCode">
+        </div>
+        <div class="row">
+            <label for="">도서명</label>
+            <input type="texx" name="bookName">
+        </div>
+        <div class="row">
+            <label for="">저자</label>
+            <input type="texx" name="writer">
+        </div>
+        <div class="row">
+            <label for="">출판사</label>
+            <input type="texx" name="company">
+        </div>
+        <div class="row">
+            <label for="">금액</label>
+            <input type="texx" name="price">
+        </div>
+        <div id="btn">
+            <button>저장</button>
+            <button>선택삭제</button>
+        </div>
+        <div id="list"></div>
+    </div>
+    <script src="doyeon.js"></script>
+
+</body>
+
+</html>

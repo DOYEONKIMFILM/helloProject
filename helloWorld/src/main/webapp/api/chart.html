@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var memberByDept = []; // [['Sales', 10], ['Engineering', 5], ['', ]]
+        // title 지정
+        var titleAry = ['Department', 'CntByDept'];
+        memberByDept.push(titleAry);
+
+        // Ajax 호출
+        var xhtp = new XMLHttpRequest();
+        xhtp.onload = function () {
+            let result = JSON.parse(xhtp.responseText);
+            console.log(result); // {id:?, first_name:?, last_name:?}
+
+            // 결과값의 department, 1 => memberByDept: ['Service', 1];
+            //                                        ['Accounting', 1]
+            result.forEach(function (member) {
+                let cnt = 0;
+                console.log(member.department)
+                for (let i = 0; i < memberByDept.length; i++) {
+                    // memberByDept 배열에 부서가 추가된 이력이 있는지 확인
+                    // 있을때, 1을 추가
+                    // 없을때, 새로운 배열을 추가
+                    if (memberByDept[i][0] == member.department) {
+                        cnt = memberByDept[i][1];
+                        memberByDept[i][1] = ++cnt;
+                        break;
+                    }
+                }
+                // 동일한 값이 없을때
+                if (cnt == 0) {
+                    let departAry = []; //['Service', 1]
+                    departAry.push(member.department); //부서
+                    departAry.push(1); //인원추가
+                    memberByDept.push(departAry); //멤버배열에 추가
+                }
+
+            });
+            console.log(memberByDept); //[['Sales', 2], ['Marketing', 3]]
+
+            // memberByDept 값이 []
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+        }
+
+        xhtp.open('get', 'employee_info.json');
+        xhtp.send();
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(memberByDept);
+            // [{},{},{} =>[[],[],[]]] <이런형식으로 우리가 데이터를만들어준다
+
+            var options = {
+                title: '부서별 사원수'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

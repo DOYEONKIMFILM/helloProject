@@ -7,6 +7,22 @@ import java.util.List;
 import com.edu.common.DAO;
 
 public class EmpDAO extends DAO {
+
+	public boolean deleteEmployee(String empId) throws SQLException {
+		String sql = "delete from emp_temp where employee_id = ?";
+		connect();
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, empId);
+
+		int r = psmt.executeUpdate(); // 처리된 건수
+		if (r > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	// 삭제
 	public void deleteEmp(int empId) {
 		String sql = "DELETE FROM emp_temp where employee_id =?";
@@ -38,6 +54,28 @@ public class EmpDAO extends DAO {
 			psmt.setInt(4, vo.getEmployeeId());
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 변경");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+
+	public void insertEmployee(EmployeeVO vo) {
+		String sql = "insert into emp_temp(employee_id, first_name, last_name, salary, email, hire_date, job_id) values(?,?,?,?,?,?,?)";
+		connect();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getEmployeeId());
+			psmt.setString(2, vo.getFirstName());
+			psmt.setString(3, vo.getLastName());
+			psmt.setInt(4, vo.getSalary());
+			psmt.setString(5, vo.getEmail());
+			psmt.setString(6, vo.getHireDate());
+			psmt.setString(7, "IT_PROG");
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건이 입력되었습니다.");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +122,7 @@ public class EmpDAO extends DAO {
 				emp.setFirstName(rs.getString("first_name"));
 				emp.setLastName(rs.getString("last_name"));
 				emp.setEmail(rs.getString("email"));
-				emp.setHireDate(rs.getString("hire_date"));
+				emp.setHireDate(rs.getString("hire_date").substring(0, 10));
 				emp.setJobId(rs.getString("job_id"));
 				emp.setSalary(rs.getInt("salary"));
 
