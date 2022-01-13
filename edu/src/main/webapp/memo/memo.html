@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#memoList>div {
+	border: 1px dotted grey;
+}
+
+#memoList>div>strong, #commentList>div>input {
+	margine: 3px;
+}
+</style>
+</head>
+<body>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			loadMemoList();
+		});
+
+		// 목록조회 화면 출력 -> 조회 시 get방식
+		function loadMemoList() {
+			var xhtp = new XMLHttpRequest();
+			xhtp.open('get', '../memo.do?cmd=selectAll');
+			xhtp.send();
+			xhtp.onload = loadMemoResult;
+		}
+
+		// 목록조회 콜백
+		function loadMemoResult(e) {
+			console.log(e.currentTarget.responseText);
+			var result = JSON.parse(e.currentTarget.responseText);
+			var memoList = document.getElementById('memoList');
+
+			result.forEach(function(item) {
+				var memoDiv = makeMemoView(item);
+				memoList.appendchild(memoDiv);
+			});
+			
+		}
+
+		// 데이터 한건 생성
+		function makeMemoView(memo) {
+			var div = document.createElement('div');
+			div.setAttribute('mid', memo.id);
+			div.setAttribute('mname', memo.name);
+			div.setAttribute('mtent', memo.content);
+			div.setAttribute('id', memo.id);
+
+			// 태그 그려주기
+			var str = '<strong>'
+					+ memo.name
+					+ '</strong>'
+					+ comment.content
+					+ '<input type="button" value="수정" onclick="viewUpdateForm('
+					+ memo.id + ')">'
+			div.innerHTML = str;
+
+			return div;
+
+		}
+	</script>
+
+</body>
+<div id="memoList"></div>
+<!-- 한줄 등록 -->
+<div id="memoAdd">
+	<form action="" method="get" name="addForm">
+		닉네임: <input type="text" name="name" size="10"><br> 한 줄
+		일기:
+		<textarea name="content" cols="20" rows="2"></textarea>
+		<br> <input type="button" value="등록" onclick="addMemo()">
+	</form>
+</div>
+</html>

@@ -7,6 +7,7 @@ import java.util.List;
 import org.edu.common.DAO;
 
 public class CommentDAO extends DAO {
+	// sql을 연결하여 작업하는 공간의 클래스
 
 	// 글 등록
 	public CommentVO insertComment(String name, String content) {
@@ -55,7 +56,8 @@ public class CommentDAO extends DAO {
 		return null;
 	}
 
-	// 전체목록
+	
+	// 전체목록 가져오기!
 	public List<CommentVO> selectAll() {
 		String sql = "SELECT * FROM comments ORDER BY 1";
 		connect();
