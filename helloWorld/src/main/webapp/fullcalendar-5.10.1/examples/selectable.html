@@ -2,74 +2,124 @@
 <html>
 
 <head>
-  <meta charset='utf-8' />
-  <link href='../lib/main.css' rel='stylesheet' />
-  <script src='../lib/main.js'></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
+<meta charset='utf-8' />
+<link href='../lib/main.css' rel='stylesheet' />
+<script src='../lib/main.js'></script>
+<script>
+	var eventData = ''; // 값을 넣어주기
 
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        initialDate: '2022-01-12',
-        navLinks: true, // can click day/week names to navigate views
-        selectable: true,
-        selectMirror: true,
+	// 아래 부분을 실행
+	document.addEventListener('DOMContentLoaded', function() {
+		var xhtp = new XMLHttpRequest();
+		// 방식, 파일명(서버 통신 파일)
+		xhtp.open('get', '../../ScheduleServlet');
+		xhtp.send();
+		xhtp.onload = function() {
+			console.log(xhtp.responseText);
+			eventData = JSON.parse(xhtp.responseText);
+			showCalendar();
+		}
+	});
 
-        //추가
-        select: function (arg) {
-          var title = prompt('Event Title:');
-          if (title) {
-            calendar.addEvent({
-              title: title,
-              start: arg.start,
-              end: arg.end,
-              allDay: arg.allDay
-            })
-          }
-          calendar.unselect()
-        },
-        //삭제
-        eventClick: function (arg) {
-          if (confirm('Are you sure you want to delete this event?')) {
-            arg.event.remove()
-          }
-        },
-        editable: true,
-        dayMaxEvents: true, // allow "more" link when too many events
-        events: [{
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2020-09-09T16:00:00',
-          end: '2020-09-09T19:00:00'
-        }]
-      });
+	// Ajax 호출이 끝나고나면 실행
+	function showCalendar() {
+		var calendarEl = document.getElementById('calendar');
 
-      calendar.render();
-    });
-  </script>
-  <style>
-    body {
-      margin: 40px 10px;
-      padding: 0;
-      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-      font-size: 14px;
-    }
+		var calendar = new FullCalendar.Calendar(
+				calendarEl,
+				{
+					headerToolbar : {
+						left : 'prev,next today',
+						center : 'title',
+						right : 'dayGridMonth,timeGridWeek,timeGridDay'
+					},
 
-    #calendar {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-  </style>
+					initialDate : '2022-01-12',
+					navLinks : true, // can click day/week names to navigate views
+					selectable : true,
+					selectMirror : true,
+
+					// 일정 추가
+					select : function(arg) {
+						var title = prompt('Event Title:');
+
+						if (title) {
+							console.log(arg);
+
+							var regAjax = new XMLHttpRequest();
+							regAjax.open('post', '../../ScheduleServlet');
+							regAjax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+							regAjax.send(`action=insert&title=${title}&start=${arg.startStr}&end=${arg.endStr}`);
+
+							regAjax.onload = function() {
+								var result = JSON.parse(regAjax.responseText); // {"retCode":"Success"}
+								if (result.retCode == 'Success') {
+									// 화면에 추가하는 코드
+									calendar.addEvent({
+										title : title,
+										start : arg.start,
+										end : arg.end,
+										allDay : arg.allDay
+									})
+								} else {
+									// 실패일경우
+									alert('오류가 발생했습니다');
+								}
+							} // end of onload
+						} // end of if (title)
+						calendar.unselect()
+					},
+					// 삭제
+					eventClick : function(arg) {
+						//console.log(arg.el.innerText);
+						var title = arg.event._def.title;
+						if (confirm('Are you sure you want to delete this event?')) {
+							// 데이터삭제 처리
+							var delAjax = new XMLHttpRequest();
+							delAjax.open('post', '../../ScheduleServlet');
+							delAjax.setRequestHeader('Content-type',
+									'application/x-www-form-urlencoded');
+							delAjax.send(`title=${title}&action=delete`);
+
+							delAjax.onload = function() {
+								var result = JSON.parse(delAjax.responseText); // {"retCode":"Success"}
+								if (result.retCode == 'Success') {
+									// 정상적으로 삭제
+									arg.event.remove() // 화면삭제
+								} else {
+									// 에러발생
+									alert('에러가 발생했습니다.');
+								}
+							}
+						}
+					},
+					editable : true,
+					dayMaxEvents : true, // allow "more" link when too many events
+					events : eventData
+				// [{}, {}, {}]
+				});
+
+		calendar.render();
+	}
+</script>
+<style>
+body {
+	margin: 40px 10px;
+	padding: 0;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+</style>
 </head>
 
 <body>
 
-  <div id='calendar'></div>
+	<div id='calendar'></div>
 
 </body>
 
