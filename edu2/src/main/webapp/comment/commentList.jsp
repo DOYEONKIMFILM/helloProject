@@ -23,7 +23,7 @@
 		out.print("<thead><th>아이디</th><th>이름</th><th>내용</th></thead>");
 		out.print("<tbody>");
 		for (CommentVO comment : list) {
-			out.print("<tr><td>" + comment.getId() + "</td><td>" //
+			out.print("<tr><td><a href='commentGet.do?id=" + comment.getId() + "'>" + comment.getId() + "</a></td><td>" //
 			+ comment.getName() + "</td><td>" //
 			+ comment.getContent() + "</td></tr>");
 		}

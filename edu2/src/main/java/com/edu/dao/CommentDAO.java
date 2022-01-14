@@ -7,9 +7,31 @@ import java.util.List;
 import com.edu.common.DAO;
 import com.edu.model.CommentVO;
 
-
 public class CommentDAO extends DAO {
 	// sql을 연결하여 작업하는 공간의 클래스
+
+	// 한건조회
+	public CommentVO selectOne(String id) {
+		String sql = "SELECT * FROM comments WHERE id=?";
+		connect();
+		CommentVO vo = null;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo = new CommentVO(rs.getInt("id"), //
+						rs.getString("name"), //
+						rs.getString("content"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return vo;
+	}
 
 	// 글 삭제
 	public boolean deleteComment(String id) {

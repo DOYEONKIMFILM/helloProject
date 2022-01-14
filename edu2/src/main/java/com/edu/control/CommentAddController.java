@@ -1,4 +1,4 @@
-package com.edu.common;
+package com.edu.control;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.common.Controller;
 import com.edu.dao.CommentDAO;
 import com.edu.model.CommentVO;
 

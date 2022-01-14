@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.control.CommentAddController;
+import com.edu.control.CommentGetController;
+import com.edu.control.CommentListController;
+import com.edu.control.CommentUpdateController;
 import com.edu.control.MemberListController;
 import com.edu.control.memberInsertController;
 
@@ -29,6 +33,8 @@ public class FrontController extends HttpServlet {
 		// 댓글 관련
 		map.put("/commentAdd.do", new CommentAddController());
 		map.put("/commentList.do", new CommentListController());
+		map.put("/commentGet.do", new CommentGetController());
+		map.put("/commentUpdate.do", new CommentUpdateController());
 	}
 	
 	@Override
