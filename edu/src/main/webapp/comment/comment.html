@@ -43,10 +43,14 @@
 	// 한건 생성							// 데이터 한건
 	function makeCommentView(comment) { // {id:?, name:?, content:?}
 		var div = document.createElement('div');
-		div.setAttribute('cid', comment.id);
-		div.setAttribute('cname', comment.name);
-		div.setAttribute('ctent', comment.content);
+		//div.setAttribute('cid', comment.id);
+		//div.setAttribute('cname', comment.name);
+		//div.setAttribute('ctent', comment.content);
 		div.setAttribute('id', comment.id);
+
+		div.setAttribute('data-id', comment.id);
+		div.setAttribute('data-name', comment.name);
+		div.setAttribute('data-content', comment.content);
 
 		//방법1.태그 그려주기
 		//var strong = document.createElement('strong');
@@ -64,24 +68,58 @@
 		var str = '<strong>' + comment.name + '</strong>' + comment.content
 				+ '<input type="button" value="수정" onclick="viewUpdateForm('
 				+ comment.id + ')">'
+				+ '<input type="button" value="삭제" onclick="confirmDeletion('
+				+ comment.id + ')">'
 		div.innerHTML = str;
 
 		return div;
 	}
 
+	// id값을 pk로 찾아오게 한다
 	function viewUpdateForm(id) {
 		var commentDiv = document.getElementById(id);
 		var updateFormDiv = document.getElementById('commentUpdate');
-		updateFormDiv.style.display = 'block';
-		
-		document.updateForm.id.value = commentDiv.getAttribute('cid');
-		document.updateForm.name.value = commentDiv.getAttribute('cname');
-		document.updateForm.content.value = commentDiv.getAttribute('ctent');
-		
+		updateFormDiv.style.display = 'block'; //수정화면 none 이였다가 보이게한다. 수정을 눌렀을때
+
+		//document.updateForm.id.value = commentDiv.getAttribute('cid');
+		//document.updateForm.name.value = commentDiv.getAttribute('cname');
+		//document.updateForm.content.value = commentDiv.getAttribute('ctent');
+
+		document.updateForm.id.value = commentDiv.dataset.id;
+		document.updateForm.name.value = commentDiv.dataset.name;
+		document.updateForm.content.value = commentDiv.dataset.content;
+
 		//comment 위에 넣고, 등록창은 숨기겠다
 		commentDiv.after(updateFormDiv);
 		document.getElementById('commentAdd').style.display = 'none';
-		
+	}
+
+	function confirmDeletion(id) {
+		// Ajax 호출 -> 서블릿 호출 -> DB삭제 -> 서블릿 -> 화면반영
+		var delAjax = new XMLHttpRequest();
+		delAjax.open('post', '../commentServ.do');
+		delAjax.setRequestHeader("Content-type",
+				"application/x-www-form-urlencoded");
+		delAjax.send(`cmd=delete&id=${id}`);
+		delAjax.onload = deleteResult; // 콜백호출
+	}
+
+	// 삭제 콜백
+	function deleteResult(e) {
+		console.log(e);
+		var result = JSON.parse(e.target.responseText)
+		if (result.retCode == 'Success') {
+			// 화면에서 삭제
+			var commentDiv = document.getElementById(result.retVal);
+			//commentDiv.remove(); 가지고온 그 대상자체를 지운다.
+
+			var commentList = document.getElementById('commentList');
+			commentList.removeChild(commentDiv); //하위요소를 지움
+
+		} else {
+			// 에러발생 메세지
+			window.alert('Error!');
+		}
 	}
 
 	// 글 등록
@@ -124,6 +162,45 @@
 			document.addForm.content.value = "";
 		}
 	}
+
+	// 수정 -> 변경버튼 클릭시
+	function updateComment() {
+		var id = document.updateForm.id.value;
+		var name = document.updateForm.name.value;
+		var content = document.updateForm.content.value;
+		// 수정하는 서블릿 -> DB반영 -> 서블릿 -> comment.html(정상처리완료)
+		// Ajax 호출
+		var updateAjax = new XMLHttpRequest();
+		updateAjax.open('post', '../commentServ.do');
+		updateAjax.setRequestHeader("Content-type",
+				"application/x-www-form-urlencoded");
+		updateAjax.send(`cmd=update&name=${name}&content=${content}&id=${id}`);
+		updateAjax.onload = updateResult; // 업데이트 콜백함수!
+
+		function updateResult() {
+			console.log(updateAjax.responseText)
+			let result = JSON.parse(updateAjax.responseText)
+			// retCode => Success 화면수정, retCode => Fail 에러가 발생
+			if (result.retCode == 'Success') {
+				var comment = result.retVal;
+				var commentDiv = makeCommentView(comment);
+				var oldComment = document.getElementById(comment.id);
+
+				// 변경
+				document.getElementById('commentList').replaceChild(commentDiv,
+						oldComment);
+
+				function cancelUpdate() {
+					// 화면전환
+					document.getElementById('commentUpdate').style.display = 'none';
+					document.getElementById('commentAdd').style.display = 'block';
+				}
+			} else {
+				window.alert('Error!');
+			}
+
+		}
+	}
 </script>
 </head>
 
@@ -139,12 +216,12 @@
 	</div>
 	<!-- 댓글수정 -->
 	<div id="commentUpdate" style="display: none;">
-	 <form action="" method="get" name="updateForm">
-		<input type="hidden" name="id"> 이름: <input type="text"
-			name="name" size="10"><br> 내용:
-		<textarea name="content" cols="20" rows="2"></textarea>
-		<br> <input type="button" value="변경" onclick="updateComment()">
-		<input type="button" value="취소" onclick="cancelUpdate()">
+		<form action="" method="get" name="updateForm">
+			<input type="hidden" name="id"> 이름: <input type="text"
+				name="name" size="10"><br> 내용:
+			<textarea name="content" cols="20" rows="2"></textarea>
+			<br> <input type="button" value="변경" onclick="updateComment()">
+			<input type="button" value="취소" onclick="cancelUpdate()">
 		</form>
 	</div>
 </body>

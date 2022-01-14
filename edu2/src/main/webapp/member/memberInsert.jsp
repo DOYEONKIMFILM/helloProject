@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index.jsp</title>
+<title>member/memberInsert.jsp</title>
 </head>
 <body>
-	<h3>Hello,</h3>
-	<a href='comment/comment.html'>comment</a>
+	<h3>회원정보등록</h3>
+	<a href="../memberList.do">회원리스트</a>
 </body>
 </html>
