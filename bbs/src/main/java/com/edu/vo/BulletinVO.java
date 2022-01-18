@@ -1,0 +1,65 @@
+package com.edu.vo;
+
+public class BulletinVO {
+	private int bbsId;
+	private String bbsTitle;
+	private String bbsContent;
+	private String bbsWriter;
+	private String bbsImage;
+	private String bbsCreateDate;
+	private String bbshit;
+	
+	public int getBbsId() {
+		return bbsId;
+	}
+	public void setBbsId(int bbsId) {
+		this.bbsId = bbsId;
+	}
+	public String getBbsTitle() {
+		return bbsTitle;
+	}
+	public void setBbsTitle(String bbsTitle) {
+		this.bbsTitle = bbsTitle;
+	}
+	public String getBbsContent() {
+		return bbsContent;
+	}
+	public void setBbsContent(String bbsContent) {
+		this.bbsContent = bbsContent;
+	}
+	public String getBbsWriter() {
+		return bbsWriter;
+	}
+	public void setBbsWriter(String bbsWriter) {
+		this.bbsWriter = bbsWriter;
+	}
+	public String getBbsImage() {
+		return bbsImage;
+	}
+	public void setBbsImage(String bbsImage) {
+		this.bbsImage = bbsImage;
+	}
+	public String getBbsCreateDate() {
+		return bbsCreateDate;
+	}
+	public void setBbsCreateDate(String bbsCreateDate) {
+		this.bbsCreateDate = bbsCreateDate;
+	}
+	public String getBbshit() {
+		return bbshit;
+	}
+	public void setBbshit(String bbshit) {
+		this.bbshit = bbshit;
+	}
+	
+	@Override
+	public String toString() {
+		return "BulletinVO [bbsId=" + bbsId + ", bbsTitle=" + bbsTitle + ", bbsContent=" + bbsContent + ", bbsWriter="
+				+ bbsWriter + ", bbsImage=" + bbsImage + ", bbsCreateDate=" + bbsCreateDate + ", bbshit=" + bbshit
+				+ "]";
+	}
+	
+	
+	
+	
+}
