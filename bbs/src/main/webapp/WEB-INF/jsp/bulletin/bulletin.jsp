@@ -8,7 +8,7 @@ ${bulletin }
 		document.forms.delFrm.submit();
 	}
 	function listFunc(){
-		location.href="${pageContext.request.contextPath }/noticeList.do"
+		location.href="${pageContext.request.contextPath }/bulletinList.do"
 	}
 </script>
 
