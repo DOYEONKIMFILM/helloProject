@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.edu.common.Controller;
 import com.edu.common.HttpUtil;
 
-public class BulletinFormController implements Controller {
+public class NoticeFormController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "bulletin/bulletinForm.tiles";
+		String path = "notice/noticeForm.tiles";
 		
 		HttpUtil.forward(req, resp, path);
 

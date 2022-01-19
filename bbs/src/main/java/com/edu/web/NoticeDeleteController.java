@@ -7,15 +7,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.common.Controller;
-import com.edu.common.HttpUtil;
+import com.edu.service.NoticeService;
+import com.edu.serviceImpl.NoticeDAO;
 
-public class BulletinFormController implements Controller {
+public class NoticeDeleteController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "bulletin/bulletinForm.tiles";
+		// 입력값 -> 삭제 -> 리스트 페이지
+		String id = req.getParameter("id");
 		
-		HttpUtil.forward(req, resp, path);
+		NoticeService service = new NoticeDAO();
+		service.delete(Integer.parseInt(id));
+		
+		resp.sendRedirect("noticeList.do");
 
 	}
 

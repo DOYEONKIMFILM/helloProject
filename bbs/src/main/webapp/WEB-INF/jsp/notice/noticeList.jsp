@@ -7,9 +7,8 @@
 		document.forms.frm.submit();
 	}
 </script>
-<form id="frm" name="frm" action="${pageContext.request.contextPath }/bulletinSelect.do" method="post">
+<form id="frm" name="frm" action="${pageContext.request.contextPath }/noticeSelect.do" method="post">
 	<input type="hidden" name="id">
-</form>
 <table class='table' border="1">
 	<thead>
 		<tr>
@@ -21,16 +20,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="bulletin" items="${bulletinList }">
-			<tr onclick="formSubmit(${bulletin.bbsId })">
-				<td>${bulletin.bbsId }</td>
-				<td>${bulletin.bbsTitle }</td>
-				<td>${bulletin.bbsWriter }</td>
-				<td>${bulletin.bbsCreateDate }</td>
-				<td>${bulletin.bbsHit }</td>
-			</tr>
-		</c:forEach>
+	<c:forEach var="notice" items="${noticeList }">
+		<tr onclick="formSubmit(${notice.noticeId })">
+			<td>${notice.noticeId }</td>
+			<td>${notice.noticeTitle }</td>
+			<td>${notice.noticeContent }</td>
+			<td>${notice.noticeWdate }</td>
+			<td>${notice.noticeHit }</td>
+		</tr>
+	</c:forEach>
 	</tbody>
-
 </table>
-	<a href="${pageContext.request.contextPath }/bulletinForm.do">글등록</a>
+	<a href="${pageContext.request.contextPath }/noticeForm.do">공지등록</a>

@@ -1,34 +1,35 @@
 package com.edu.web;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.common.Controller;
-import com.edu.common.HttpUtil;
 import com.edu.service.BulletinService;
 import com.edu.serviceImpl.BulletinDAO;
 import com.edu.vo.BulletinVO;
 
-public class BulletinListController implements Controller {
+public class BulletinUpdateController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 전체리스트 조회 -> bulletin/bulletinList.jsp
+		// 입력값을 읽어오고 update 메소드 호출! 결과=> 리스트페이지 이동!
+		String id =	req.getParameter("id");	//name 속성의 변수이름! ex> id
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
 		
-		String path = "bulletin/bulletinList.tiles";
+		BulletinVO vo = new BulletinVO();
+		vo.setBbsId(Integer.parseInt(id));
+		vo.setBbsTitle(title);
+		vo.setBbsContent(content);
 		
-		// 게시글 리스트
 		BulletinService service = new BulletinDAO();
-		List<BulletinVO> list = service.selectList();
+		service.update(vo);
 		
-		// .bulletinList.do 요청정보를 bulletinList.jsp 페이지로 전달
-		req.setAttribute("bulletinList", list);
+		resp.sendRedirect("bulletinList.do");
 		
-		HttpUtil.forward(req, resp, path);
 
 	}
 

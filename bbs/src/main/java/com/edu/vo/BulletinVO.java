@@ -7,8 +7,7 @@ public class BulletinVO {
 	private String bbsWriter;
 	private String bbsImage;
 	private String bbsCreateDate;
-	private String bbshit;
-	
+	private String bbsHit;
 	public int getBbsId() {
 		return bbsId;
 	}
@@ -45,17 +44,16 @@ public class BulletinVO {
 	public void setBbsCreateDate(String bbsCreateDate) {
 		this.bbsCreateDate = bbsCreateDate;
 	}
-	public String getBbshit() {
-		return bbshit;
+	public String getBbsHit() {
+		return bbsHit;
 	}
-	public void setBbshit(String bbshit) {
-		this.bbshit = bbshit;
+	public void setBbsHit(String bbsHit) {
+		this.bbsHit = bbsHit;
 	}
-	
 	@Override
 	public String toString() {
 		return "BulletinVO [bbsId=" + bbsId + ", bbsTitle=" + bbsTitle + ", bbsContent=" + bbsContent + ", bbsWriter="
-				+ bbsWriter + ", bbsImage=" + bbsImage + ", bbsCreateDate=" + bbsCreateDate + ", bbshit=" + bbshit
+				+ bbsWriter + ", bbsImage=" + bbsImage + ", bbsCreateDate=" + bbsCreateDate + ", bbsHit=" + bbsHit
 				+ "]";
 	}
 	
