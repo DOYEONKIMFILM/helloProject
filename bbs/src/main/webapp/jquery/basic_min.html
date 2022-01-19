@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic_min.html</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        const members = [{
+            fullName: "홍길동",
+            age: 20,
+            phone: "010-1111-5678"
+        }, {
+            fullName: "김만수",
+            age: 25,
+            phone: "010-2222-5234"
+        }, {
+            fullName: "홍민기",
+            age: 27,
+            phone: "010-3333-4234"
+        }]
+
+        // document.addEventlistener('DOMContentLoaded', function(){})
+        $(document).ready(function () {
+
+            let tbl = $('<table id="tbl">').attr('border', '1')
+
+            members.forEach(function (item) {
+                let tr = $('<tr>').append(
+                    $('<td>').text(item.fullName), // <td>홍길동</td>
+                    $('<td>').text(item.age), // <td>20</td>
+                    $('<td>').text(item.phone), // <td>010-1111-2222</td>
+                   $('<td>').html($('<button>').text('삭제').click(delFnc)) //
+                );
+                tr.mouseover(mouseOverFnc).mouseout(mouseOutFnc);
+                tbl.append(tr);
+            });
+          //  $('#show').append(tbl);
+          $('div').eq(1).append(tbl);
+
+          function delFnc() {
+            console.log('defn');
+            console.log(this)
+            $(this).parent().parent().remove(); //버튼(this)의부모td, td의부모 tr, -> 삭제
+          }
+          
+          // 마우스 오버
+          function mouseOverFnc() {
+              console.log(this);
+              $(this).css('background-color', 'yellow');
+          }
+
+          // 마우스 아웃
+          function mouseOutFnc() {
+              console.log(this);
+              $(this).css('background-color', '');
+          }
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="show">1</div>
+    <div id="show">2</div>
+    <div id="show">3</div>
+    <div id="show">4</div>
+  
+</body>
+
+</html>
