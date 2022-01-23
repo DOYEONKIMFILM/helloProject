@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -110,8 +111,10 @@ ${bulletin }
 </div>
 <script>
 	// 데이터 한건을 가지고 리스트에 추가
-	function attachList(reply) {
-		let div = $('<div>').attr('class', 'row').attr('id', reply.replyId);
+	function attachList(reply) {	// reply => id, writer, content
+		let div = $('<div>').attr('class', 'row')
+		.attr({'id', reply.replyId, 'writer':reply.replyWriter, 'content':reply.replyDate});
+		
 		div.append(//
 			$('<span>').text(reply.replyWriter), //
 			$('<span>').text(reply.replyContent), //
@@ -121,7 +124,10 @@ ${bulletin }
 		$('.reply-list').append(div);
 	}
 	function deleteReply() {
-		let delId = $(this).parent().attr('id');
+		let delId = $(this).parent().attr('id');	//삭제 할 아이디
+		// 댓글을 작성한 userId == 삭제할려고 하는 userId
+		let writer = $(this).parnet().children().eq(0).text(); //글 작성자 userId
+		
 		console.log(delId);
 		$.ajax ({
 			url: 'deleteReply.do', //호출주소
